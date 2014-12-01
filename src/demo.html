@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <!-- <script src="swes6.js"></script> -->
+    <script>
+      var scope = 'es6/';
+
+      function register() {
+        navigator.serviceWorker.register('swes6-worker.js', {scope: scope})
+          .then(function(serviceWorker) {
+            console.log('registered: ');
+            console.log(serviceWorker);
+          })
+          .catch(function(whut) {
+            console.error('uh oh... ');
+            console.error(whut);
+          });
+      }
+
+      function unregister() {
+        navigator.serviceWorker.unregister(scope)
+          .then(function() {
+            console.log('unregistered');
+          });
+      }
+    </script>
+    <script src="es6/test.js"></script>
+    <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+  </head>
+  <body>
+    <button onclick="register()">Register</button>
+    <button onclick="unregister()">Unregister</button>
+  </body>
+</html>
